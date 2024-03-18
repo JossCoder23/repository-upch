@@ -9,6 +9,7 @@ export class ClientRoutes {
     const clientController = new CLientsController();
 
     router.get('/', clientController.getClients);
+    router.get('/:id', clientController.getClientsById);
     router.post('/create', clientController.createClient);
 
     return router;

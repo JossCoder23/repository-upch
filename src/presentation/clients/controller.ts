@@ -8,6 +8,9 @@ export class CLientsController {
   public getClients = (req:Request, res:Response) => {
     res.json('Hello world')
   }
+  public getClientsById = (req:Request, res:Response) => {
+    res.json('Hello world')
+  }
 
   public createClient = (req:Request, res:Response) => {
 
