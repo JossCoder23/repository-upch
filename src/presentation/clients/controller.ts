@@ -5,6 +5,11 @@ export class ClientsController {
   //* Dependency Injections * DI
   constructor() {}
 
+  public createClient = (req:Request, res:Response) => {
+    const body = req.body;
+    return res.json(body);
+  }
+  
   public getClients = (req:Request, res:Response) => {
     res.json('GET CLIENTE');
   }
@@ -13,9 +18,6 @@ export class ClientsController {
     res.json('GET CLIENT BY ID');
   }
 
-  public createClient = (req:Request, res:Response) => {
-    const body = req.body;
-    return res.json(body);
-  }
+
 
 }
