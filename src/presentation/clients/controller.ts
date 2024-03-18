@@ -11,18 +11,18 @@ export class CLientsController {
 
   public createClient = (req:Request, res:Response) => {
 
-    const { 
-      names,
-      surnames,
-      type_document,
-      document_number,
-      telephone_number,
-      email,
-      graduation_year,
-      city 
-    } = req.body;
+    // const { 
+    //   names,
+    //   surnames,
+    //   type_document,
+    //   document_number,
+    //   telephone_number,
+    //   email,
+    //   graduation_year,
+    //   city 
+    // } = req.body;
 
-    const body = req.body;
+    // const body = req.body;
 
     res.json("hello world");
   }
