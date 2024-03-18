@@ -10,7 +10,7 @@ export class ClientRoutes {
 
     // router.get('/', clientController.getClients);
     // router.get('/:id', clientController.getClientsById);
-    router.post('/create', clientController.createClient);
+    router.post('/', clientController.createClient);
 
     return router;
 
