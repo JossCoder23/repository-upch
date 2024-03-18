@@ -15,7 +15,7 @@ export class ClientsController {
 
   public createClient = (req:Request, res:Response) => {
     const body = req.body;
-    res.json(body);
+    return res.json(body);
   }
 
 }
