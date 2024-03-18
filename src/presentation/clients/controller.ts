@@ -1,23 +1,43 @@
 import { Request, Response } from 'express';
 
+const todos = [
+  { id: 1, text: 'Buy milk', completedAt: new Date() },
+  { id: 2, text: 'Buy bread', completedAt: null },
+  { id: 3, text: 'Buy butter', completedAt: new Date() },
+];
+
 export class ClientsController {
 
   //* Dependency Injections * DI
   constructor() {}
 
   public createClient = (req:Request, res:Response) => {
-    const body = req.body;
-    return res.json(body);
+    const { text } = req.body;
+    if ( !text ) return res.status( 400 ).json( { error: 'Text property is required' } );
+    const newTodo = {
+      id: todos.length + 1,
+      text: text,
+      completedAt: null
+    };
+
+    todos.push( newTodo );
+
+    res.json( newTodo );
   }
-  
+
   public getClients = (req:Request, res:Response) => {
-    res.json('GET CLIENTE');
+    return res.json( todos );
   }
 
   public getClientsById = (req:Request, res:Response) => {
-    res.json('GET CLIENT BY ID');
+    const id = +req.params.id;
+    if ( isNaN( id ) ) return res.status( 400 ).json( { error: 'ID argument is not a number' } );
+
+    const todo = todos.find( todo => todo.id === id );
+
+    ( todo )
+      ? res.json( todo )
+      : res.status( 404 ).json( { error: `TODO with id ${ id } not found` } );
   }
-
-
 
 }
