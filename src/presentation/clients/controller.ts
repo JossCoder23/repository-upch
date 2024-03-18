@@ -1,19 +1,19 @@
 import { Request, Response } from 'express';
 
-export class CLientsController {
+export class ClientsController {
 
   //* Dependency Injections * DI
   constructor() {}
 
   public getClients = (req:Request, res:Response) => {
-    res.json('Hello world')
+    res.json('GET CLIENTE')
   }
   public getClientsById = (req:Request, res:Response) => {
-    res.json('Hello world')
+    res.json('GET CLIENT BY ID')
   }
 
   public createClient = (req:Request, res:Response) => {
-    res.json("hello world");
+    res.json("POST CLIENTS");
   }
 
 }

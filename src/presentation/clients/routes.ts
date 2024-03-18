@@ -1,13 +1,15 @@
 import { Router } from 'express';
-import { CLientsController } from './controller';
+import { ClientsController } from './controller';
 
 export class ClientRoutes {
 
   static get routes():Router {
 
     const router = Router();
-    const clientController = new CLientsController();
+    const clientController = new ClientsController();
 
+    router.get('/', clientController.getClients);
+    router.get('/:id', clientController.getClientsById);
     router.post('/', clientController.createClient);
 
     return router;
