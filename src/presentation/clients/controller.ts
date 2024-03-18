@@ -24,7 +24,7 @@ export class CLientsController {
 
     const body = req.body;
 
-    res.json("hello world")
+    res.json("hello world");
   }
 
 }
