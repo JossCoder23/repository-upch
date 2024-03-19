@@ -1,43 +1,32 @@
 import { Request, Response } from 'express';
-
-const todos = [
-  { id: 1, text: 'Buy milk', completedAt: new Date() },
-  { id: 2, text: 'Buy bread', completedAt: null },
-  { id: 3, text: 'Buy butter', completedAt: new Date() },
-];
+import { prisma } from '../../data/postgres';
+import { CreateClientDto } from '../../domain/dtos';
 
 export class ClientsController {
 
   //* Dependency Injections * DI
   constructor() {}
 
-  public createClient = (req:Request, res:Response) => {
-    const { text } = req.body;
-    if ( !text ) return res.status( 400 ).json( { error: 'Text property is required' } );
-    const newTodo = {
-      id: todos.length + 1,
-      text: text,
-      completedAt: null
-    };
+  public createClient = async(req:Request, res:Response) => {
+    
+    // const createClientDto = CreateClientDto.create( req.body )
+    const [ error, createClientDto ] = CreateClientDto.create( req.body );
+    if( error ) return res.status(400).json({ error })
 
-    todos.push( newTodo );
+    const client = await prisma.repository.create({
+      data: createClientDto! 
+    })
 
-    res.json( newTodo );
+    res.json( client )
+
   }
 
-  public getClients = (req:Request, res:Response) => {
-    return res.json( todos );
-  }
+  // public getClients = (req:Request, res:Response) => {
+  //   res.json("GET clients")
+  // }
 
-  public getClientsById = (req:Request, res:Response) => {
-    const id = +req.params.id;
-    if ( isNaN( id ) ) return res.status( 400 ).json( { error: 'ID argument is not a number' } );
-
-    const todo = todos.find( todo => todo.id === id );
-
-    ( todo )
-      ? res.json( todo )
-      : res.status( 404 ).json( { error: `TODO with id ${ id } not found` } );
-  }
+  // public getClientsById = (req:Request, res:Response) => {
+  //   res.json("GET client by Id")
+  // }
 
 }
