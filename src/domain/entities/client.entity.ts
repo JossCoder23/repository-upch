@@ -21,16 +21,9 @@ export class ClientEntity {
   }
 
   public static fromObject( object:{[key:string]:any} ):ClientEntity {
-    const { id, names, surnames, type_document, document_number, telephone_number, email, graduation_year, city, program_course, completedAt } = object;
+    const { id, names, surnames, type_document, document_number, telephone_number, email, graduation_year, city, program_course, completedAt = new Date() } = object;
     if ( !id || !names || !surnames || !type_document || !document_number || !telephone_number || !email || !graduation_year || !city || !program_course ) {
       throw 'All properties are required';
-    }
-    let newCompletedAt;
-    if ( completedAt ) {
-      newCompletedAt = new Date(completedAt);
-      if ( isNaN( newCompletedAt.getTime() ) ) {
-        throw 'CompletedAt is not a valid date'
-      }
     }
     return new ClientEntity( id, names, surnames, type_document, document_number, telephone_number, email, graduation_year, city, program_course, completedAt );
   }
