@@ -21,7 +21,7 @@ export class ClientEntity {
   }
 
   public static fromObject( object:{[key:string]:any} ):ClientEntity {
-    const { id, names, surnames, type_document, document_number, telephone_number, email, graduation_year, city, program_course, completedAt = new Date() } = object;
+    const { id, names, surnames, type_document, document_number, telephone_number, email, graduation_year, city, program_course, completedAt } = object;
     if ( !id || !names || !surnames || !type_document || !document_number || !telephone_number || !email || !graduation_year || !city || !program_course ) {
       throw 'All properties are required';
     }
