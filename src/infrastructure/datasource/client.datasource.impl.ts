@@ -5,8 +5,9 @@ export class ClientDatasourceImpl implements ClientDatasource {
 
   async create(createClientDto: CreateClientDto): Promise<ClientEntity> {
     const client = await prisma.repository.create({
-      data: createClientDto! 
+      data: { ...createClientDto!, completedAt: new Date() + '' }
     });
+
     return ClientEntity.fromObject( client );
   }
 

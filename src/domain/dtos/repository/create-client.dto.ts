@@ -10,19 +10,18 @@ export class CreateClientDto {
     public readonly email:string,
     public readonly graduation_year:string,
     public readonly city:string,
-    public readonly program_course:string,
-    public readonly completedAt:Date
+    public readonly program_course:string
   ) {}
 
   static create( props:{[key:string]:any} ):[string?, CreateClientDto?] {
 
-    const { names, surnames, type_document, document_number, telephone_number, email, graduation_year, city, program_course, completedAt } = props;
+    const { names, surnames, type_document, document_number, telephone_number, email, graduation_year, city, program_course } = props;
 
     if( !names || !surnames || !type_document || !document_number || !telephone_number || !email || !graduation_year || !city || !program_course ) { 
       return ['All properties are required', undefined];
     }
 
-    return [undefined, new CreateClientDto( names, surnames, type_document, document_number, telephone_number, email, graduation_year, city, program_course, completedAt )];
+    return [undefined, new CreateClientDto( names, surnames, type_document, document_number, telephone_number, email, graduation_year, city, program_course )];
   }
 
 }
