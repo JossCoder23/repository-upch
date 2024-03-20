@@ -1,11 +1,14 @@
 import { prisma } from '../../data/postgres';
+import { DateTime } from 'luxon';
 import { CreateClientDto, ClientEntity, ClientDatasource } from '../../domain';
 
 export class ClientDatasourceImpl implements ClientDatasource {
 
   async create(createClientDto: CreateClientDto): Promise<ClientEntity> {
+    let fecha = DateTime.now();
+    let date = `${fecha.year}/${fecha.month}/${fecha.day}T${fecha.hour}:${fecha.minute}:${fecha.second}`;
     const client = await prisma.repository.create({
-      data: { ...createClientDto!, completedAt: new Date() + '' }
+      data: { ...createClientDto!, completedAt: date }
     });
 
     return ClientEntity.fromObject( client );
