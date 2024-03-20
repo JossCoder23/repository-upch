@@ -4,3 +4,4 @@ export * from './entities/client.entity';
 export * from './repositories/client.repository';
 
 export * from './use-cases/client/create-client';
+export * from './use-cases/client/delete-clients';

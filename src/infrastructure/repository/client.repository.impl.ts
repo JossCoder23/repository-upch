@@ -20,4 +20,8 @@ export class ClientRepositoryImpl implements ClientRepository {
   //   throw new Error("Method not implemented.");
   // }
 
+  deleteAll(): Promise<null> {
+    return this.datasource.deleteAll();
+  }
+
 }

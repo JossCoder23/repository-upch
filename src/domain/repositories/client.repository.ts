@@ -7,6 +7,6 @@ export abstract class ClientRepository {
   // abstract getAll():Promise<ClientEntity[]>;
   // abstract findById( id:number ):Promise<ClientEntity>;
   // abstract updateById( updateClientDto:UpdateClientDto ):Promise<ClientEntity>;
-  // abstract deleteById( id:number ):Promise<ClientEntity>;
+  abstract deleteAll():Promise<null>;
 
 }

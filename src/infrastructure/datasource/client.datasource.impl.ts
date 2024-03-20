@@ -18,8 +18,9 @@ export class ClientDatasourceImpl implements ClientDatasource {
   //   throw new Error('Method not implemented.');
   // }
 
-  // deleteById(id: number): Promise<ClientEntity> {
-  //   throw new Error('Method not implemented.');
-  // }
+  async deleteAll():Promise<any> {
+    await prisma.repository.deleteMany();
+    return "Se elimino con exito"
+  }
 
 }

@@ -13,6 +13,7 @@ export class ClientRoutes {
     const clientController = new ClientsController( clientRepository );
     
     router.post('/', clientController.createClient);
+    router.delete('/', clientController.deleteClients);
     // router.get('/', clientController.getClients);
     // router.get('/:id', clientController.getClientsById);
 
