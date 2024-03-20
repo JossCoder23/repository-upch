@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { prisma } from '../../data/postgres';
-import { ClientRepository, CreateClient, CreateClientDto } from '../../domain';
+import { ClientRepository, CreateClientDto } from '../../domain';
 
 export class ClientsController {
 
@@ -14,13 +14,8 @@ export class ClientsController {
     // const createClientDto = CreateClientDto.create( req.body )
     const [ error, createClientDto ] = CreateClientDto.create( req.body );
     if( error ) return res.status(400).json({ error })
-    new CreateClient( this.clientRepository )
-      .execute( createClientDto! )
-      .then( client => res.json( client ) )
-      .catch( error => res.status(400).json({error}) )
-
-    // const client = await this.clientRepository.create( createClientDto! );
-    // res.json( client );
+    const client = await this.clientRepository.create( createClientDto! );
+    res.json( client );
 
   }
 
