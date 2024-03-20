@@ -13,7 +13,7 @@ export class ClientEntity {
     public graduation_year:string,
     public city:string,
     public program_course:string,
-    public completedAt?:Date|null
+    public completedAt:Date
   ){}
 
   get isCompleted() {
