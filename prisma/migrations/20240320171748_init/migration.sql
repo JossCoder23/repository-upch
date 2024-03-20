@@ -10,6 +10,7 @@ CREATE TABLE "repository" (
     "graduation_year" VARCHAR NOT NULL,
     "city" VARCHAR NOT NULL,
     "program_course" VARCHAR NOT NULL,
+    "completedAt" TIMESTAMP NOT NULL,
 
     CONSTRAINT "repository_pkey" PRIMARY KEY ("id")
 );

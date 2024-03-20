@@ -13,6 +13,7 @@ export class ClientsController {
     
     // const createClientDto = CreateClientDto.create( req.body )
     const [ error, createClientDto ] = CreateClientDto.create( req.body );
+    console.log(error)
     if( error ) return res.status(400).json({ error })
     new CreateClient( this.clientRepository )
       .execute( createClientDto! )
