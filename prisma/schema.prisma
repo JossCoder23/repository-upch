@@ -25,4 +25,10 @@ model repository {
   city String @db.VarChar
   program_course String @db.VarChar
   completedAt String @db.VarChar
+  url_reference String @db.VarChar
+  utm_campaign String @db.VarChar
+  utm_content String @db.VarChar
+  utm_source String @db.VarChar
+  utm_term String @db.VarChar
+  utm_id String @db.VarChar
 }
